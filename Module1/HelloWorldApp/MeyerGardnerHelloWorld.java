@@ -1,8 +1,7 @@
 package HelloWorldApp;
 
-/**
- *
- * @author deborahmeyer-gardner
+/*
+ * Meyer-Gardner, D. 2023. CIS 505 Intermediate Java Programming. Bellevue University.
  */
 public class MeyerGardnerHelloWorld {
 
