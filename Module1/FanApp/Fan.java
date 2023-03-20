@@ -3,15 +3,6 @@
         Comprehensive Version (12th ed.). Pearson Education, Inc.
     Modified by J. James 2015
     Additional modifications by D. Meyer-Gardner 2023
-
-    - Four constants named STOPPED, SLOW, MEDIUM, and FAST with values 0, 1, 2, and 3 to represent the fans speed.
-    - A private int data field named speed that specifies the speed of the fan. Use the constants and set the default speed to STOPPED.
-    - A private boolean data field named on that specifies whether the fan is on or off. The default is off (i.e., false).
-    - A private double data field named radius that specifies the radius of the fan. The default is 6.
-    - A private string data field named color that specifies the color of the fan. The default is white.
-    - Accessor and mutator methods for all four data fields.
-    - A no-argument constructor that creates a default fan (set all fields to their default values). An argument constructor that creates a fan using the four fields as arguments.
-    - Override the toString method. Return a string description for the fan. If the fan is on, the method returns the fan speed, color, and radius in a combined string. If the fan is not on, the method returns the fan color, radius, and a message of “fan is off” in a combined string.
 */ 
 public class Fan {
     // Four constants of fan speed, the numbers represent the fan speed
