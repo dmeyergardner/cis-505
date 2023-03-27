@@ -20,9 +20,9 @@ public class Team {
     }
     
     // public method named addPlayer with a string argument that adds a player to the players data field. This method should increment the playerCount data field, so you are able to use the array’s index to add new players.
-    public void addPlayers(String players) {
-        players[numberOfPlayers] = player;
-        numberOfPlayers++;
+    public void addPlayer(String playerName) {
+        players[playerCount] = playerName;
+        playerCount++;
     }
 
     // public string array method named getPlayers that returns the players data field.
@@ -39,4 +39,4 @@ public class Team {
     public String getTeamName() {
         return teamName;
     }
-}
+} 
