@@ -4,6 +4,7 @@
     Modified by R. Krasso 2021
     Additional modifications by D. Meyer-Gardner 2023
 */ 
+
 import java.util.Scanner;  // Import the Scanner class
 
 public class TestSportsTeamapp { //test the Team class
@@ -12,12 +13,12 @@ public class TestSportsTeamapp { //test the Team class
     
     boolean keepGoing = true;
     while (keepGoing) {  // while loop if user wants to keep using the program or exit
-        System.out.println("");
-        System.out.println("  Welcome to the Sports Team App");
-        System.out.println("");
+        System.out.println(""); // formating
+        System.out.println("  Welcome to the Sports Team App"); // formatting
+        System.out.println(""); // formatting
         System.out.print("  Enter the team name: "); //Prompt the user to enter the team name
         String teamName = scanner.nextLine(); // Create a team name Scanner object
-        System.out.println("");
+        System.out.println(""); // formatting
         
         Team team = new Team(teamName);
         
@@ -31,10 +32,10 @@ public class TestSportsTeamapp { //test the Team class
             team.addPlayer(players[i]);
         }
         
-        System.out.println("");
-        System.out.println("  --Team Summary--");
+        System.out.println(""); // formatting
+        System.out.println("  --Team Summary--"); // formatting
         System.out.println("  Number of players in team " + team.getPlayerCount()); // Output team numbers from team player user input
-        System.out.print("  Players on team: ");
+        System.out.print("  Players on team: "); // formatting
         
         //Use the inputted values to create a new instance of the Team class and use the player names to invoke the addPlayer method
         String[] teamPlayers = team.getPlayers();
@@ -43,13 +44,13 @@ public class TestSportsTeamapp { //test the Team class
         }
         System.out.println();
         
-        System.out.println("");
-        System.out.print("  Do you want to continue? (y/n) ");
+        System.out.println(""); // formatting
+        System.out.print("  Do you want to continue? (y/n) ");  // if y then it will shoot the logic back to the top of the while loop
         String choice = scanner.nextLine();
         if (choice.equalsIgnoreCase("n")) {
             keepGoing = false;
-            System.out.println("");
-            System.out.println("  End of line...");
+            System.out.println(""); // formatting
+            System.out.println("  End of line..."); // formatting
         }
     }
     scanner.close();
