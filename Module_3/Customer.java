@@ -3,68 +3,51 @@
         Comprehensive Version (12th ed.). Pearson Education, Inc.
     Modified by R. Krasso 2021
     Additional modifications by D. Meyer-Gardner 2023
-
-    Design a class named Customer to represent a customer. This class contains:
-1. A private string data field named name that specifies the name of a customer.
-2. A private string data field named address that specifies the address of a customer.
-3. A private string data field named city that specifies the city of a customer.
-4. A private string data field named zip that specifies the zip code of a customer.
-5. A no-argument constructor that creates a default customer.
-6. An argument constructor that creates a customer using the four data fields.
-7. Accessor methods for all four data fields.
-8. Override the toString() method. Return a string description for a customer with all four
-fields, on separate lines.
 */ 
-class Customer {
-    private String customerName;
-    private String customerAddress;
-    private String customerCity;
-    private String customerZip;
 
+// a class named Customer to represent a customer
+public class Customer {
+    private String customerName; // private string data field named name that specifies the name of a customer
+    private String customerAddress; // private string data field named address that specifies the address of a customer
+    private String customerCity; // private string data field named city that specifies the city of a customer
+    private String customerZip; // private string data field named zip that specifies the zip code of a customer
+
+    // no-argument constructor that creates a default customer
+    public Customer() {
+        customerName = "Sarah Jane";
+        customerAddress = "1234 First Ave";
+        customerCity = "Anywhere";
+        customerZip = "09876";
+    }
+
+    // argument constructor that creates a customer using the four data fields
     public Customer(String customerName, String customerAddress, String customrCity, String customerZip) {
-        this.name = customerName;
-        this.address = customerAddress;
-        this.city = customerCity;
-        this.zip = customerZip;
+        this.customerName = customerName;
+        this.customerAddress = customerAddress;
+        this.customerCity = customerCity;
+        this.customerZip = customerZip;
         }
         
+        // Accessor methods for all four data fields
         public String getName() {
-        return name;
-        }
-        
-        public void setName(String name) {
-        this.name = name;
+            return customerName;
         }
         
         public String getAddress() {
-        return address;
-        }
-        
-        public void setAddress(String address) {
-        this.address = address;
+            return customerAddress;
         }
         
         public String getCity() {
-        return city;
-        }
-        
-        public void setCity(String city) {
-        this.city = city;
+            return customerCity;
         }
         
         public String getZip() {
-        return zip;
+            return customerZip;
         }
         
-        public void setZip(String zip) {
-        this.zip = zip;
-        }
-        
+        // Override the toString() method. Return a string description for a customer with all four fields, on separate lines
         @Override
         public String toString() {
-        return "Name: " + name + "\n" +
-        "Address: " + address + "\n" +
-        "City: " + city + "\n" +
-        "Zip Code: " + zip + "\n";
+            return "Name: " + customerName + "\nAddress: " + customerAddress + "\nCity: " + customerCity + "\nZip: " + customerZip;
         }    
 }

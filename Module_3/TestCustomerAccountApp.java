@@ -3,80 +3,63 @@
         Comprehensive Version (12th ed.). Pearson Education, Inc.
     Modified by R. Krasso 2021
     Additional modifications by D. Meyer-Gardner 2023
-
-    Design a class named TestCustomerAccountApp to test the Account, Customer, and CustomerDB classes:
-1. Prompt the user to enter a customer number between 1007 and 1009. Use the inputted number to invoke the getCustomer static method and assign the returned value to a variable named customer.
-2. Display the account menu using the accounts displayMenu method.
-3. Handle the user’s selection and invoke the corresponding method. For invalid selections,
-display a message “Error: Invalid Option.”
-4. Allow the user to continue to select as many options as they choose by prompting them to
-decide between continuing or exiting the menu. Use a do...while loop in your
-programming logic.
-5. After exiting the menu, display the customers details using the customer classes
-toString() method. Next, on a separate line, show the customers account balance.
-
-Special note. For the currency fields, use Java’s printf function and the expression “$%,6.2f”
 */ 
 
 import java.util.Scanner;
-import java.util.ArrayList;
 
+// class named TestCustomerAccountApp to test the Account, Customer, and CustomerDB classes
 public class TestCustomerAccountApp {
     public static void main(String[] args) {
+        System.out.println("  Welcome to the Customer Account App");
+        System.out.println("");
+        System.out.println("Enter a customer ID: ");
+                System.out.print("    ex: 1007, 1008, 1009>: "); // Prompt for customer number between 1007 and 1009
     
-        Scanner input = new Scanner(System.in);
-        
-        // prompt user to enter customer number
-        System.out.print("Enter customer number between 1007 and 1009: ");
-        int customerNumber = input.nextInt();
-        
-        // get customer from CustomerDB using customer number
-        Customer customer = CustomerDB.getCustomer(customerNumber);
-        
-        // display account menu and handle user selection
+        Integer id = scanner.nextInt();
+
+        // Get customer from customer database, invoke the getCustomer static method and assign the returned value to a variable named customer.
+        Customer customer = CustomerDB.getCustomer(id);
+        System.out.println(customer);
+
+        Account account = new Account();
         String choice;
+
+        // Allow the user to continue to select as many options as they choose by prompting them to decide between continuing or exiting the menu. Use a do...while loop in your programming logic.
         do {
+            // Display account menu using the accounts displayMenu method
             Account.displayMenu();
-            System.out.print("Enter option: ");
-            choice = input.next();
-            
-            // invoke corresponding method based on user selection
+            account.displayMenu();
+            choice = scanner.next();
+          
             switch (choice) {
-                case "1":
-                    double amount;
-                    System.out.print("Enter deposit amount: ");
-                    amount = input.nextDouble();
-                    customer.getAccount().deposit(amount);
-                    break;
-                
-                case "2":
-                    System.out.print("Enter withdrawal amount: ");
-                    amount = input.nextDouble();
-                    boolean success = customer.getAccount().withdraw(amount);
-                    if (!success) {
-                        System.out.println("Error: Insufficient funds");
-                    }
-                    break;
-                
-                case "3":
-                    System.out.printf("Account balance: $%,6.2f\n", customer.getAccount().getBalance());
-                    break;
-                
-                case "4":
-                    break;
-                
-                default:
-                    System.out.println("Error: Invalid option");
-                    break;
+              case "1": // check balance
+                System.out.println("Current balance: $" + account.getBalance());
+                break;
+              case "2": { // deposit
+                System.out.print("Enter amount to deposit: $");
+                double amt = scanner.nextDouble();
+                account.deposit(amt);
+                System.out.println("Deposit of $" + amt + " successful.");
+                break;
+              }
+              case "3": { // withdraw
+                System.out.print("Enter amount to withdraw: $");
+                double amt = scanner.nextDouble();
+                account.withdraw(amt);
+                System.out.println("Withdrawal of $" + amt + " successful.");
+                break;
+              }
+              case "4": // Exit
+                System.out.println("Exiting menu...");
+                break;
+              default:
+              // Handle the user’s selection and invoke the corresponding method. For invalid selections, display a message “Error: Invalid Option.”
+                System.out.println("Error: Invalid option.");
             }
-            
-            // prompt user to continue or exit menu
-            System.out.print("Continue? (y/n): ");
-            choice = input.next();
-        } while (choice.equalsIgnoreCase("y"));
-        
-        // display customer details and account balance
-        System.out.println(customer.toString());
-        System.out.printf("Account balance: $%,6.2f\n", customer.getAccount().getBalance());
-    }    
+          } while (!choice.equals("4"));
+          
+          // After exiting the menu, display the customers details using the customer classesmtoString() method. Next, on a separate line, show the customers account balance.
+          System.out.println(customer);
+          System.out.println("Current balance: $" + account.getBalance());
+    }
 }
