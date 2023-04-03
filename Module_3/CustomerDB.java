@@ -11,7 +11,7 @@ public class CustomerDB {
 
         // Using an if...else if...else if...else statement, compare the argument id data field against the values 1007, 1008, and 1009
         if (id == 1007) {
-            return new Customer("John Smith", "123 Main St", "Anytown", "12345"); // For each match, return a new customer object with unique fields
+            return new Customer("Jon Smith", "123 Main St", "Anytown", "12345"); // For each match, return a new customer object with unique fields
         } else if (id == 1008) {
             return new Customer("Jane Doe", "456 Elm St", "Anyville", "67890"); // For each match, return a new customer object with unique fields
         } else if (id == 1009) {

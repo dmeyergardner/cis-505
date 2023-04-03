@@ -21,7 +21,7 @@ public class Customer {
     }
 
     // argument constructor that creates a customer using the four data fields
-    public Customer(String customerName, String customerAddress, String customrCity, String customerZip) {
+    public Customer(String customerName, String customerAddress, String customerCity, String customerZip) {
         this.customerName = customerName;
         this.customerAddress = customerAddress;
         this.customerCity = customerCity;
@@ -30,19 +30,19 @@ public class Customer {
         
         // Accessor methods for all four data fields
         public String getName() {
-            return customerName;
+            return this.customerName;
         }
         
         public String getAddress() {
-            return customerAddress;
+            return this.customerAddress;
         }
         
         public String getCity() {
-            return customerCity;
+            return this.customerCity;
         }
         
         public String getZip() {
-            return customerZip;
+            return this.customerZip;
         }
         
         // Override the toString() method. Return a string description for a customer with all four fields, on separate lines

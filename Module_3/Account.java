@@ -20,20 +20,20 @@ public class Account {
 
     // accessor method for the balance data field
     public double getBalance() {
-        return balance;
+        return this.balance;
     }
     
     // public method named deposit with a double argument named amt and a return type of void. Increase the running total of the balance data field using the methods argument
     public void deposit(double amt) {
-        balance += amt;
-        System.out.println("Deposited " + amt + " successfully.");
+        this.balance += amt;
+        System.out.printf("Successfully Deposited $%,6.2f", amt);
     }
     
     // public method named withdraw with a double argument named amt and a return type of void. If the balance data field is greater than or equal to the argument, decrease the running total of the balance field using the methods argument
     public void withdraw(double amt) {
-        if (balance >= amt) {
-            balance -= amt;
-            System.out.println("Withdrawn " + amt + " successfully.");
+        if (this.balance >= amt) {
+            this.balance -= amt;
+            System.out.printf("Successfully Withdrawn $%,6.2f", amt);
         } else {
             System.out.println("Insufficient balance.");
         }
@@ -41,18 +41,26 @@ public class Account {
     
     // public method named displayMenu with a return type of void
     public void displayMenu() {
-        System.out.println("  Account Menu");
-        System.out.println("  Enter <D/d> for depsit");
-        System.out.println("  Enter <W/w> for withdraw");
-        System.out.println("  Enter <B/b> for balance");
-        System.out.print("    Enter option:  ");
+        System.out.println("");
+        ;System.out.println("Account Menu");
+        System.out.println("Enter <D/d> for deposit");
+        System.out.println("Enter <W/w> for withdraw");
+        System.out.println("Enter <B/b> for balance");
+        System.out.print("  Enter option:  ");
     }
         
     // public method named getTransactionDate with a return type of string. Return a date using the format MM-dd-yyyy.
     public String getTransactionDate() {
-        DateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");
-        Date date = new Date();
-        return dateFormat.format(date);
-    }
-       
+        // Get the current date/time
+        Date currentDate = new Date();
+    
+        // Create a SimpleDateFormat object with the desired date format
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");
+    
+        // Use the SimpleDateFormat object to format the date as a string
+        String dateString = dateFormat.format(currentDate);
+    
+        // Return the formatted date string
+        return dateString;
+      }
 }
