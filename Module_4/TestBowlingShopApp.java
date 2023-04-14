@@ -15,10 +15,14 @@ Special note. Pay close attention to the format of the price data field. Use the
 import java.util.Scanner;
 
 public class TestBowlingShopApp {
+    public static void main(String[] args) {
+
+        displayMenu();
+
+    }
 
     // public static method named displayMenu that displays the menu
-    public static void main(String[] args) {
-        displayMenu();
+    public static void displayMenu() {
         System.out.println("");
         System.out.println("MENU OPTIONS:");
         System.out.println("  1. <b> Bowling Balls");
@@ -27,103 +31,106 @@ public class TestBowlingShopApp {
         System.out.println("  4. <x> To exit");
         System.out.println("");
         System.out.println("");
-        }
-
-    choice=scanner.nextLine();
-
-    switch(choice)
-
-    {
-            case "1":
-                System.out.println("Displaying all products:");
-                products = productDB.getProducts("all");
-                break;
-                
-            case "2":
-                
-                System.out.println("Adding a product:");
-                System.out.println("Please choose a product type:");
-                System.out.println("1. Ball");
-                System.out.println("2. Bag");
-                System.out.println("3. Shoe");
-                String type = scanner.nextLine();
-                System.out.println("Please enter the product name:");
-                String name = scanner.nextLine();
-                System.out.println("Please enter the product price:");
-                double price = scanner.nextDouble();
-                scanner.nextLine(); // clear the buffer
-                
-                if (type.equals("1")) {
-                    System.out.println("Please enter the ball weight:");
-                    double weight = scanner.nextDouble();
-                    scanner.nextLine(); // clear the buffer
-                    Ball newBall = new Ball(name, price, weight);
-                    productDB.addProduct(newBall);
-                    System.out.println("Ball added successfully!");
-                
-                } else if (type.equals("2")) {
-                    System.out.println("Please enter the bag capacity:");
-                    int capacity = scanner.nextInt();
-                    scanner.nextLine(); // clear the buffer
-                    Bag newBag = new Bag(name, price, capacity);
-                    productDB.addProduct(newBag);
-                    System.out.println("Bag added successfully!");
-                
-                } else if (type.equals("3")) {
-                    System.out.println("Please enter the shoe size:");
-                    int size = scanner.nextInt();
-                    scanner.nextLine(); // clear the buffer
-                    System.out.println("Please enter the shoe color:");
-                    String color = scanner.nextLine();
-                    Shoe newShoe = new Shoe(name, price, size, color);
-                    productDB.addProduct(newShoe);
-                    System.out.println("Shoe added successfully!");
-                
-                } else {
-                    System.out.println("Invalid product type!");
-                }
-                break;
-            
-            case "3":
-                System.out.println("Removing a product:");
-                System.out.println("Please enter the product ID:");
-                int id = scanner.nextInt();
-                scanner.nextLine(); // clear the buffer
-                
-                if (productDB.removeProduct(id)) {
-                    System.out.println("Product removed successfully!");
-                
-                } else {
-                    System.out.println("Product not found!");
-                }
-                break;
-            
-            case "4":
-                System.out.println("Searching for a product:");
-                System.out.println("Please enter the product name:");
-                String searchName = scanner.nextLine();
-                products = productDB.getProducts(searchName);
-                break;
-            
-            case "x":
-                break;
-            
-            default:
-                System.out.println("Invalid choice!");
-        }
-
-    if(products!=null)
-    {
-        int size = products.size();
-        for (int i = 0; i < size; i++) {
-            Product product = products.dequeue();
-            System.out.println(product.toString());
-            products.enqueue(product);
-        }
     }
-
-    }while(!choice.equals("x"));}
-
-public static void main(String[] args) {
-    TestBowlingShopApp.displayMenu(); 
 }
+
+/*
+ * choice=scanner.nextLine();
+ * 
+ * switch(choice)
+ * 
+ * private static void displayMenu() {
+ * }
+ * 
+ * {
+ * case "1":
+ * System.out.println("Displaying all products:");
+ * products = productDB.getProducts("all");
+ * break;
+ * 
+ * case "2":
+ * 
+ * System.out.println("Adding a product:");
+ * System.out.println("Please choose a product type:");
+ * System.out.println("1. Ball");
+ * System.out.println("2. Bag");
+ * System.out.println("3. Shoe");
+ * String type = scanner.nextLine();
+ * System.out.println("Please enter the product name:");
+ * String name = scanner.nextLine();
+ * System.out.println("Please enter the product price:");
+ * double price = scanner.nextDouble();
+ * scanner.nextLine(); // clear the buffer
+ * 
+ * if (type.equals("1")) {
+ * System.out.println("Please enter the ball weight:");
+ * double weight = scanner.nextDouble();
+ * scanner.nextLine(); // clear the buffer
+ * Ball newBall = new Ball(name, price, weight);
+ * productDB.addProduct(newBall);
+ * System.out.println("Ball added successfully!");
+ * 
+ * } else if (type.equals("2")) {
+ * System.out.println("Please enter the bag capacity:");
+ * int capacity = scanner.nextInt();
+ * scanner.nextLine(); // clear the buffer
+ * Bag newBag = new Bag(name, price, capacity);
+ * productDB.addProduct(newBag);
+ * System.out.println("Bag added successfully!");
+ * 
+ * } else if (type.equals("3")) {
+ * System.out.println("Please enter the shoe size:");
+ * int size = scanner.nextInt();
+ * scanner.nextLine(); // clear the buffer
+ * System.out.println("Please enter the shoe color:");
+ * String color = scanner.nextLine();
+ * Shoe newShoe = new Shoe(name, price, size, color);
+ * productDB.addProduct(newShoe);
+ * System.out.println("Shoe added successfully!");
+ * 
+ * } else {
+ * System.out.println("Invalid product type!");
+ * }
+ * break;
+ * 
+ * case "3":
+ * System.out.println("Removing a product:");
+ * System.out.println("Please enter the product ID:");
+ * int id = scanner.nextInt();
+ * scanner.nextLine(); // clear the buffer
+ * 
+ * if (productDB.removeProduct(id)) {
+ * System.out.println("Product removed successfully!");
+ * 
+ * } else {
+ * System.out.println("Product not found!");
+ * }
+ * break;
+ * 
+ * case "4":
+ * System.out.println("Searching for a product:");
+ * System.out.println("Please enter the product name:");
+ * String searchName = scanner.nextLine();
+ * products = productDB.getProducts(searchName);
+ * break;
+ * 
+ * case "x":
+ * break;
+ * 
+ * default:
+ * System.out.println("Invalid choice!");
+ * }
+ * 
+ * if(products!=null)
+ * {
+ * int size = products.size();
+ * for (int i = 0; i < size; i++) {
+ * Product product = products.dequeue();
+ * System.out.println(product.toString());
+ * products.enqueue(product);
+ * }
+ * }
+ * 
+ * } while(!choice.equals("x"));
+ * }
+ */
