@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+//class named TestExpenseTracker to test the classes Transaction, TransactionIO, and ValidatorIO
 public class TestExpenseTracker {
     public static void main(String[] args) {
     
