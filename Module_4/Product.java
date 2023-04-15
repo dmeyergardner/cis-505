@@ -3,15 +3,6 @@
         Comprehensive Version (12th ed.). Pearson Education, Inc.
     Modified by R. Krasso 2021
     Additional modifications by D. Meyer-Gardner 2023
-
-    Design a superclass named product to represent a product in a bowling shop. This class contains:
-1. A private string data field named code that specifies the product code. The default value is an empty string.
-2. A private string data field named description that specifies the products description. The default value is an empty string.
-3. A private double data field named price that specifies the price of a product. The default value is 0.
-4. A no-argument constructor that creates a default product.
-5. Accessor and mutator methods for all three data fields.
-6. Override the toString() method. Return a description of the product with all three fields
-on separate lines.
 */
 public class Product {
 
@@ -70,7 +61,7 @@ public class Product {
     // three fields on separate lines
     @Override
     public String toString() {
-        return "Product Code: " + code + "\nDescription: " + description + "\nPrice: $"
+        return "Product Code: " + code + "\nDescription: " + description + "\nPrice: "
                 + String.format("$%,6.2f", price);
     }
 }

@@ -3,12 +3,9 @@
         Comprehensive Version (12th ed.). Pearson Education, Inc.
     Modified by R. Krasso 2021
     Additional modifications by D. Meyer-Gardner 2023
-
-    Design a class named ProductDB to represent the bowling shops database. The class contains:
-1. A public static method named getProducts with string argument named code and a return type of a product generic queue (hint: we are leveraging the GenericQueue to store the product objects). Using an if...else if...else if...else check the argument against the values “b, s, and a.” For arguments that equal “b” create five (5) new ball instances, set all four data fields with values, and add them to a product generic queue named balls. For arguments that equal “s” create five (5) new shoe instances, set all four data fields with values, and add them to a product generic queue named shoes. For arguments that equal “a’ create three (3) new shoe instances, set all four data fields with values, and add them to a product generic queue named shoes. For all other arguments, return an empty product generic queue.
 */
 
-// lass named ProductDB to represent the bowling shops database
+// class named ProductDB to represent the bowling shops database
 public class ProductDB {
 
     // public static method named getProducts with string argument named code
@@ -62,26 +59,10 @@ public class ProductDB {
 
             queue = balls;
         }
-
-        // For arguments that equal “b” create five (5) new ball instances, set all four
-        // data fields with values and add them to a product generic queue named balls
-        /*
-         * if (code.equalsIgnoreCase("b")) {
-         * for (int i = 1; i <= 5; i++) {
-         * Ball ball = new Ball("B" + i, "Bowling Ball " + i, 99.99 + i, "Color " + i);
-         * queue.enqueue(ball);
-         * }
-         */
-
-        // // Using an if...else if...else if...else check the argument against the
-        // values “s”
+        // Using an if...else if...else if...else check the argument against the values “s”
         else if (code.equalsIgnoreCase("s")) {
 
-            // For arguments that equal “s” create five (5) new shoe instances, set all four
-            // data fields with values, and add them to a product generic queue named shoes.
-            // For arguments that equal “a’ create three (3) new shoe instances, set all
-            // four data fields with values, and add them to a product generic queue named
-            // shoes.
+            // For arguments that equal “s” create five (5) new shoe instances, set all four data fields with values, and add them to a product generic queue named shoes.
             Shoe shoe1 = new Shoe();
             shoe1.setCode("S100");
             shoe1.setDescription("Men's Ram Black");
@@ -121,23 +102,10 @@ public class ProductDB {
 
             queue = shoes;
         }
-
-        // For arguments that equal “s” create five (5) new shoe instances, set all four
-        // data fields with values, and add them to a product generic queue named shoes.
-        // For arguments that equal “a’ create three (3) new shoe instances, set all
-        // four data fields with values, and add them to a product generic queue named
-        // shoes.
-        /*
-         * for (int i = 1; i <= 5; i++) {
-         * Shoe shoe = new Shoe("S" + i, "Bowling Shoe " + i, 49.99 + i, 8.5 + i);
-         * queue.enqueue(shoe);
-         * }
-         */
-
-        // // Using an if...else if...else if...else check the argument against the
-        // value “a”
+        // // Using an if...else if...else if...else check the argument against the value “a”
         else if (code.equalsIgnoreCase("a")) {
 
+            // For arguments that equal “a’ create three (3) new bag instances, set all four data fields with values, and add them to a product generic queue named bags.
             Bag bag1 = new Bag();
             bag1.setCode("A100");
             bag1.setDescription("Pro Path Deluxe");

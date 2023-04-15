@@ -3,13 +3,6 @@
         Comprehensive Version (12th ed.). Pearson Education, Inc.
     Modified by R. Krasso 2021
     Additional modifications by D. Meyer-Gardner 2023
-
-    Design a product subclass named bag to represent a bowling bag. The class contains:
-1. A private string data field named type that specifies the number of bowling balls the bag can hold. The default is an empty string.
-2. A no-argument constructor that creates a default bag.
-3. Accessor and mutator methods for the type data field.
-4. Override the toString() method. Return an appended string of the superclass with an
-additional field for the bags type.
 */
 
 // product subclass named bag to represent a bowling bag
