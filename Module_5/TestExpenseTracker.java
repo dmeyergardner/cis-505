@@ -21,85 +21,95 @@ import java.util.Scanner;
 public class TestExpenseTracker {
     public static void main(String[] args) {
     
-        int choice;
-        Scanner input = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
+        int input = 0;
+        boolean cont = true;
         
+        //Display a menu to the user
+        System.out.println("Welcome to the Expense Tracker");
+        
+        //testing date format as string. Remove from final
+
         do {
-            System.out.println("Expense Tracker Menu");
-            System.out.println("---------------------");
-            System.out.println("1. List all transactions");
-            System.out.println("2. Add a transaction");
-            System.out.println("3. Display total expenses");
-            System.out.println("4. Exit");
-            
-            choice = ValidatorIO.getInt(input, "Enter your choice: ", 1, 4);
-            
-            switch(choice) {
-                case 1:
-                    displayAllTransactions();
-                    break;
-                case 2:
-                    addTransaction();
-                    break;
-                case 3:
-                    displayTotalExpenses();
-                    break;
-                case 4:
-                    System.out.println("Goodbye!");
-                    break;
-                default:
-                    System.out.println("Invalid choice. Try again.");
+            System.out.println("\nMENU OPTIONS");
+            System.out.println("  1. View Transactions");
+            System.out.println("  2. Add Transactions");
+            System.out.println("  3. View Expenses");
+            input = ValidatorIO.getInt(sc, "\nPlease choose an option: ");
+    
+            if (input == 1) {
+                String c = "y";
+                ArrayList<Transaction> transactions = new ArrayList<>();
+                try {
+                    transactions = TransactionIO.findAll();
+    
+                    System.out.println("\nMONTHLY EXPENSES\n");
+    
+                    for (Transaction transaction : transactions) {
+                        System.out.printf("Date: %s\nDescription: %s\nAmount: $%,6.2f\n\n",
+                                transaction.getDate(),
+                                transaction.getDescription(),
+                                transaction.getAmount());
+                    }
+                } catch (IOException e) {
+                    System.out.println("Exception: " + e.getMessage());
+                }
+    
+                c = ValidatorIO.getString(sc, "\nContinue? (y/n) ");
+                if (c == "n"){
+                    cont = false;
+                }
             }
-            
-        } while (choice != 4);
-        
-    }
     
-    public static void displayAllTransactions() {
-        
-        List<Transaction> transactions = TransactionIO.findAll();
-        
-        if (transactions.size() == 0) {
-            System.out.println("No transactions found.");
-        } else {
-            System.out.printf("%-20s %-20s %-10s\n", "Date", "Description", "Amount");
-            System.out.println("-------------------------------------------");
-            for (Transaction t : transactions) {
-                System.out.printf("%-20s %-20s $%,6.2f\n", t.getDate(), t.getDescription(), t.getAmount());
+            else if (input == 2) {
+                String c = "y";
+                ArrayList<Transaction> transactions = new ArrayList<>();
+    
+                while(c.equalsIgnoreCase("y")){
+                    String description = ValidatorIO.getString(sc, "\n  Enter description: ");
+                    double amount = ValidatorIO.getDouble(sc, "  Enter the amount: ");
+    
+                    Transaction transaction = new Transaction(description, amount);
+    
+                    transactions.add(transaction);
+    
+                    c = ValidatorIO.getString(sc, "\n  Add another transaction? (y/n): ");
+                    if (c == "n"){
+                        cont = false;
+                    }
+                }
+    
+                try {
+                    TransactionIO.bulkInsert(transactions);
+                }
+                catch (IOException e){
+                    System.out.println("\n  Exception:  " + e.getMessage());
+                }
             }
-        }
-        
-    }
     
-    public static void addTransaction() {
-        
-        Scanner input = new Scanner(System.in);
-        boolean addAnother;
-        
-        do {
-            String date = ValidatorIO.getRequiredString(input, "Enter date (mm/dd/yyyy): ");
-            String description = ValidatorIO.getRequiredString(input, "Enter description: ");
-            double amount = ValidatorIO.getDouble(input, "Enter amount: $", 0, Double.MAX_VALUE);
-            
-            Transaction t = new Transaction(date, description, amount);
-            TransactionIO.add(t);
-            
-            addAnother = ValidatorIO.getYesNo(input, "Add another transaction? (y/n) ");
-            
-        } while (addAnother);
-        
-    }
+            else if (input == 3) {
+                String c = "y";
+                double monthlyExpense = 0;
+                ArrayList<Transaction> transactions = new ArrayList<>();
+                try {
+                    transactions = TransactionIO.findAll();
     
-    public static void displayTotalExpenses() {
-        
-        List<Transaction> transactions = TransactionIO.findAll();
-        double total = 0;
-        
-        for (Transaction t : transactions) {
-            total += t.getAmount();
-        }
-        
-        System.out.printf("Total expenses: $%,6.2f\n", total);
-        
-    }
-}    
+                    for (Transaction transaction : transactions) {
+                        monthlyExpense += transaction.getAmount();
+                    }
+                } catch (IOException e) {
+                    System.out.println("Exception: " + e.getMessage());
+                }
+    
+                System.out.printf("\nTOTAL EXPENSES: $%,6.2f\n", monthlyExpense);
+
+                c = ValidatorIO.getString(sc, "Continue? (y/n) ");
+                if (c == "n"){
+                    cont = false;
+                }
+            }
+
+        } while(cont);
+        System.out.println("\nExiting Expense Tracker");
+    } 
+}

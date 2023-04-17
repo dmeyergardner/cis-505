@@ -16,13 +16,16 @@ data fields, on separate lines.
 
 */
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+//import java.text.SimpleDateFormat;
+//import java.time.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 //class named transaction to represent an expense transaction
 public class Transaction {
     //private string data field named date that specifies the date of a transaction.
-    private String date;
+    private String date = LocalDate.now().format(DateTimeFormatter.ofPattern("MM-dd-yyyy")).toString();
+   
     // private string data field named description that specifies the description of a transaction. 
     private String description;
     // private double data field named amount that specifies the amount of a transaction. 
@@ -30,10 +33,7 @@ public class Transaction {
 
     // no-argument constructor that creates a default transaction. 
     public Transaction(){
-        Date today = new Date();
-        // The default value is today’s date formatted as “MM-dd-yyyy”
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM-dd-yyyy");
-        this.date = simpleDateFormat.format(today);
+        //this.date = date;
         // The default is an empty string.
         this.description = "";
         //The default value is 0.
@@ -46,9 +46,16 @@ public class Transaction {
         this.amount = amount;
     }
 
+    //argument constructor that creates a transaction using the two data fields and using default date.
+    public Transaction(String description, double amount) {
+        //this.date = date;
+        this.description = description;
+        this.amount = amount;
+    }
+
     // Getters and setters for date
     public String getDate() {
-        return date;
+        return this.date;
     }
 
     public void setDate(String date) {
@@ -56,7 +63,7 @@ public class Transaction {
     }
     // Getters and setters for description
     public String getDescription() {
-        return description;
+        return this.description;
     }
 
     public void setDescription(String description) {
@@ -64,7 +71,7 @@ public class Transaction {
     }
     // Getters and setters for amount
     public double getAmount() {
-        return amount;
+        return this.amount;
     }
 
     public void setAmount(double amount) {
@@ -76,7 +83,7 @@ public class Transaction {
         return "Transaction{" +
                 "date='" + date + '\'' +
                 ", description='" + description + '\'' +
-                ", amount=" + amount +
+                ", amount= $%,6.2.f" + amount +
                 '}';
     }
 }
