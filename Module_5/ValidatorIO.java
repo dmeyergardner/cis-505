@@ -3,12 +3,6 @@
         Comprehensive Version (12th ed.). Pearson Education, Inc.
     Modified by R. Krasso 2021
     Additional modifications by D. Meyer-Gardner 2023
-
-
-1. A static method named getInt with a Scanner argument named sc and a string argument named prompt and an Integer return type. Add local variables for an Integer named input and a boolean named isValid. Set the input variable to 0 and isValid to false. Using a while loop check if isValid is false, display the contents of the prompt variable to the console, and use an if...else statement to check for Scanner hasNextInt(). For true comparisons, set the input variable to sc.nextLine and isValid to true. For false comparisons, display the message “Error! Invalid integer value.”
-2. A static method named getDouble with a Scanner argument named sc and a string argument named prompt and a double return type. Using the code I provided in Figure 2.1, repeat the process, but this time check for double values (hint: use sc.hasNextDouble() and sc.nextDouble()).
-3. A static method named getString with a Scanner argument named sc and a string argument named prompt and a string return type. Display the prompt message and use sc.next() to capture the user’s inputted value. Return the inputted value.
-
 */
 
 import java.util.Scanner;

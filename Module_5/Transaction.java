@@ -3,17 +3,6 @@
         Comprehensive Version (12th ed.). Pearson Education, Inc.
     Modified by R. Krasso 2021
     Additional modifications by D. Meyer-Gardner 2023
-
-    
-1. A private string data field named date that specifies the date of a transaction. The default value is today’s date formatted as “MM-dd-yyyy”
-2. A private string data field named description that specifies the description of a transaction. The default is an empty string.
-3. A private double data field named amount that specifies the amount of a transaction. The default value is 0.
-4. Accessor and mutator methods for the all three data fields.
-5. A no-argument constructor that creates a default transaction.
-6. An argument constructor that creates a transaction using the three data fields.
-7. Override the toString method. Return a string description of a transaction with all three
-data fields, on separate lines.
-
 */
 
 //import java.text.SimpleDateFormat;
