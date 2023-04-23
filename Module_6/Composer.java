@@ -13,74 +13,51 @@
 6. Accessor methods for all three data fields.
 7. Override the toString method. Return a string description of a composer with all three
 data fields, on separate lines.
-
-(The GenericDao interface #2).Design and interface named GenericDao to represent the operations in a data persistence layer. The interface contains:
-Figure 2.
-
-(The ComposerDao interface #3). Design an interface named ComposerDao to represent the operations in a composer data persistence layer. This interface extends the GenericDao interface, using the Composer object and Integer as its generic arguments.
 */
 
 // class named Composer to represent a composer
-public class Composer implements GenericDao{
+public class Composer{
+
     //private integer data field named id
-    private int id;
+    private Integer id;
+
     // private string data field named name
     private String name;
+
     //private string data field named genre
     private String genre;
 
-// Default no-arg constructor, all defaults are empty
-public Composer() {
-    this.id = 0;
-    this.name = "";
-    this.genre = "";
-}
+    // Default no-arg constructor, all defaults are empty
+    public Composer() {
+        this.id = 0;
+        this.name = "";
+        this.genre = "";
+    }
 
-// Argument constructor that creates a composer using all three data fields
-public Composer(int id, String name, String genre) {
-    this.id = id;
-    this.name = name;
-    this.genre = genre;
-}
+    // Argument constructor that creates a composer using all three data fields
+    public Composer(Integer id, String name, String genre) {
+        this.id = id;
+        this.name = name;
+        this.genre = genre;
+    }
 
-// Accessor methods for all three data fields
-public int getId() {
-    return this.id;
-}
+    // Accessor methods for all three data fields
+    public Integer getId() {
+        return this.id;
+    }
 
-public String getName() {
-    return this.name;
-}
+    public String getName() {
+        return this.name;
+    }
 
-public String getGenre() {
-    return this.genre;
-}
+    public String getGenre() {
+        return this.genre;
+    }
 
-class GenericDao1 implements GenaricDao{
-// Override the toString method. Return a string description of a composer with all three data fields, on separate lines.
-@Override
-public String toString() {
-    return "ID: " + id + "\n" + "Name: " + name + "\n" + "Genre: " + genre;
-}
-}
 
-/*
- * Interface
- * interface named GenericDao to represent the operations in a data persistence layer.
- */
-
-public interface GenericDao<E, K>{
-    List<E> findAll();
-    E findby(K key);
-    void insert(E entity);
-}
-
-/*
- * Interface
- * interface named ComposerDao to represent the operations in a composer data persistence layer. This interface extends the GenericDao interface, using the Composer object and Integer as its generic arguments.
- */
-
-public interface ComposerDao extends GenericDao<Composer, Integer>{
-}
-
+    // Override the toString method. Return a string description of a composer with all three data fields, on separate lines.
+    @Override
+    public String toString() {
+        return "ID: " + id + "\n" + "Name: " + name + "\n" + "Genre: " + genre;
+    }
 }

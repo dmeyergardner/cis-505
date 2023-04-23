@@ -15,103 +15,95 @@ import java.util.Scanner;
 
 // class named TestComposerApp to test the classes Composer and MemComposerDao
 public class TestComposerApp {
-    private static MemComposerDao dao = new MemComposerDao();
-    private static Scanner scanner = new Scanner(System.in);
+    public static void main(String[] args) {
 
-    int option = 0;
+        MemComposerDao dao = new MemComposerDao();
     
-    do {
-        //Display the menu to the user 
-        displayMenu();
+        Scanner sc = new Scanner(System.in);
+        int option = 0;
 
-        // user entry 
-        System.out.print("Please choose an option: ");
-        option = input.nextLine();
         System.out.println("");
+        System.out.println("Welcome to the Composer App\n");
         
-        while (option != 4) {
+        do {
+            //Display the menu to the user 
             displayMenu();
-            option = readIntInput(1, 4);
-            
+
+            // default null
+            Integer id;
+            String name;
+            String genre;
+            Composer c;
+
+            // user entry 
+            System.out.print("Please choose an option: ");
+            option = sc.nextInt();
+            System.out.println("");
+
             switch (option) {
                 case 1:
-                    viewComposers();
+                    viewComposers(dao);
                     break;
                 case 2:
-                    findComposer();
+                    //If option two is selected, prompt the user to enter an id and display the selected composer object
+                    System.out.print("Enter an id: ");
+                    id = sc.nextInt();
+                    System.out.println("\n--DISPLAYING COMPOSER--");
+
+                    //Use the MemComposerDao classes findBy method
+                    c = dao.findBy(id);
+                        if (c == null) {
+                            System.out.println("Composer not found.");
+                            System.out.println("");
+                        } else {
+                            System.out.println(c);
+                            System.out.println("");
+                        }
                     break;
+
                 case 3:
-                    addComposer();
+                    //If option 3 is selected, prompt the user to create a new composer 
+                    System.out.print("Enter an id: ");
+                    id = sc.nextInt();
+                    String newline = sc.nextLine();
+                    System.out.print("Enter a name: ");
+                    name = sc.nextLine();
+                    System.out.print("Enter a genre: ");
+                    genre = sc.nextLine();
+                        
+                        //Use the MemComposerDao classes insert method.
+                        c = new Composer(id, name, genre);
+                        dao.insert(c);
                     break;
+
                 case 4:
                     System.out.println("Goodbye!");
                     break;
+
+                // If the user inputs an invalid character, print out this error message
+                default:
+                System.out.println("Invalid option. Please enter a number 1, 2, 3, or 4.");
+                break;
             }
         }
-    
-    scanner.close();
-}
-
-// If option one is selected, display a list of composers 
-private static void viewComposers() {
-    System.out.println("--DISPLAYING COMPOSERS--");
-
-    //Use the MemComposerDao classes findAll method
-    for (Composer c : dao.findAll()) {
-        System.out.println(c);
+            while (option != 4); 
+            sc.close(); 
     }
-}
 
-//If option two is selected, prompt the user to enter an id and display the selected composer object 
-private static void findComposer() {
-    System.out.print("--FIND COMPOSER--");
-    int id = readIntInput(1, Integer.MAX_VALUE);
+    // If option one (1) is selected, display a list of composers 
+    private static void viewComposers(MemComposerDao d) {
+        System.out.println("--DISPLAYING COMPOSERS--");
 
-    //Use the MemComposerDao classes findBy method
-    Composer c = dao.findBy(id);
-    if (c == null) {
-        System.out.println("Composer not found.");
-    } else {
-        System.out.println(c);
-    }
-}
-
-//If option 3 is selected, prompt the user to create a new composer 
-private static void addComposer() {
-    System.out.print("Enter nan id: ");
-    String id = scanner.nextLine();
-    System.out.print("Enter a name: ");
-    String name = scanner.nextLine();
-    System.out.print("Enter a genre: ");
-    String genre = scanner.nextLine();
-    
-    //Use the MemComposerDao classes insert method.
-    Composer c = new Composer(id, name, genre);
-    dao.insert(c);
-}
-
-private static int readIntInput(int min, int max) {
-    int value = 0;
-    boolean validInput = false;
-    while (!validInput) {
-        try {
-            value = Integer.parseInt(scanner.nextLine().trim());
-            if (value >= min && value <= max) {
-                validInput = true;
-            } else {
-                System.out.print("Invalid input! Please enter a number between " + min + " and " + max + ": ");
-            }
-        } catch (NumberFormatException e) {
-            System.out.print("Invalid input! Please enter a number between " + min + " and " + max + ": ");
+        //Use the MemComposerDao classes findAll method
+        for (Composer c : d.findAll()) {
+            System.out.println(c);
+            System.out.println("");
         }
     }
-    return value;
-}
-    // Prompt the user with a menu
+    
+// Prompt the user with a menu
     public static void displayMenu() {
         
-        System.out.println("");
-        System.out.println("Welcome to the Composer App\n");
         System.out.println("");
         System.out.println("MENU OPTIONS:");
         System.out.println("  1. View Composers");
