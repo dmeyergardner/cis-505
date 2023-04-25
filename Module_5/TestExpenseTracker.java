@@ -50,7 +50,7 @@ public class TestExpenseTracker {
     
                 // Allow the user to stay in the menu by prompting them to continue. If the user does not wish to continue, exit the program.
                 c = ValidatorIO.getString(sc, "\nContinue? (y/n) ");
-                if (c == "n"){
+                if (c.equalsIgnoreCase("n")) {
                     cont = false;
                 }
             }
@@ -72,7 +72,7 @@ public class TestExpenseTracker {
     
                     // Allow the user to enter as many transactions as they wish by asking them to “Add another transaction.” This means you will need at least two while loops. One to check if they want to stay in the main program and one to check if they want to stay in the “Add Transactions” section.
                     c = ValidatorIO.getString(sc, "\n  Add another transaction? (y/n): ");
-                    if (c == "n"){
+                    if (c.equalsIgnoreCase("n")){
                         cont = false;
                     }
                 }
@@ -105,7 +105,7 @@ public class TestExpenseTracker {
 
                 //Allow the user to stay in the menu by prompting them to continue. If the user does not wish to continue, exit the program.
                 c = ValidatorIO.getString(sc, "Continue? (y/n) ");
-                if (c == "n"){
+                if (c.equalsIgnoreCase("n")){
                     cont = false;
                 }
             }
