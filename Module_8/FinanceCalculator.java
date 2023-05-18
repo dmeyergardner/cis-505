@@ -23,5 +23,10 @@ a. Return the calculated futureValue
 package Module_8;
 
 public class FinanceCalculator {
-    
+    private void clearFormFields() {
+        set txtMonthlyPayment
+        set txtInterestRate
+        set 
+        
+    }
 }
