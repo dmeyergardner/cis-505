@@ -81,8 +81,7 @@ public class MeyerGardenerFutureValueApp extends Application {
     /*
      * Create private variables for two TextField’s, one TextArea, five Labels, one ComboBox of type Integer, and two Button’s.
      */
- 
-    // create two textfield
+     // create two textfield
     private TextField txtMonthlyPayment = new TextField();
     private TextField b = new TextField();
  
@@ -96,8 +95,16 @@ public class MeyerGardenerFutureValueApp extends Application {
     private Label lblClear = new Label("Clear");
     private Label lblCalculate = new Label("Calculate");
 
-    //one ComboBox of type Integer
+    /*
+    * one ComboBox of type Integer
+    */
+    //combobox items
     ObservableList<String> list = FXCollections.observableArrayList("1","2","3","4");
+
+    //combobox staffs
+    var yearCombo = new ComboBox();
+    yearCombo.setItems(list);
+    grid.add(yearCombo,1,4);
 
     // create two buttons
     private Button btnClear = new Button("Clear");
