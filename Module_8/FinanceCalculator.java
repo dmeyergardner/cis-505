@@ -24,9 +24,25 @@ package Module_8;
 
 public class FinanceCalculator {
     private void clearFormFields() {
-        set txtMonthlyPayment
-        set txtInterestRate
-        set 
-        
+
+        private static final int MONTHS_IN_YEAR = 12;
+
+        // Default no-arg constructor, all defaults are empty
+        this.txtMonthlyPayment = "";
+        this.txtInterestRate = "";
+        this.txtResults = "";
+        this.lblFutureValueDate = "";
+        this.cbYears = 0;
+    }
+    private void calculateResults(double monthlyPayment, double rate, int years) {
+        /*collects the users entered values and calls the calculateFutureValue method from the FinanceCalculator class. Set the lblFutureValueDate text to the string value “Calculation as of <today’s date>” and set the txtResults TextArea to the string value “The future value is <futureValue>” */
+        int months = years * MONTHS_IN_YEAR;
+        double interestRate = 1 + (rate / 100);
+        double presentValue = monthlyPayment * months;
+        double futureValue = presentValue * Math.pow(interestRate, months);
+        return futureValue;
+    }
+    private void String() {
+        /*Add a private String method that returns today’s date with the following format “MM/dd/yyyy.” The easiest way to do this is use the SimpleDateFormat object and pass-in the string pattern “MM/dd/yyyy.” Next, call the format() method off of the SimpleDateFormat object and pass-in a new Date() instance. The return value from this method will be used to show today’s date in the “Calculation as of <today’s date>” label.  */
     }
 }

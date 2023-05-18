@@ -1,65 +1,82 @@
-
 /*
     Liang, Y.D. (2019). Introduction to Java Programming and Data Structures: 
         Comprehensive Version (12th ed.). Pearson Education, Inc.
     Modified by R. Krasso 2021
     Additional modifications by D. Meyer-Gardner 2023
-
-   4. Extend the JavaFX Application object and setup the @Override start method with a single argument for the Stage object. Exhibit B @Override start(Stage primaryStage)
-5. Create private variables for two TextField’s, one TextArea, five Labels, one ComboBox of type Integer, and two Button’s.
-    a. Set the text for the labels to match the labels in Exhibit A. Exhibit C Labels with a default text value
-    b. Set the text for the buttons to match the buttons in Exhibit A. Exhibit D Buttons with a default text value   
-   c. In the start() method, add a new GridPane object and set its alignment to Pos.CENTER, set its padding to 11.5, 12.5, 13.5, and 14.5. Next, set the panes Hgap to 5.5 and its Vgap to 5.5.
-    d. Add the controls to the GridPane. For the lblInterestRateFormat label, set the text fill to red and HPos to the right. Exhibit E lblInterestRateFormat
-    e. Add the clear and calculate buttons to an HBox with a spacing of 10 and a padding of 15, 0, 15, and 30. Exhibit F actionBtnContainer
-    f. Set the primary stages title to “YourLastName Future Value App.”
 */
 
+package MeyerGardnerFutureValueApp;
+
+import javax.swing.ComboBoxModel;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javafx.application.Application;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 //Extend the JavaFX Application object and setup the @Override start method with a single argument for the Stage object 
 public class MeyerGardenerFutureValueApp extends Application {
+
+  private TextField mp = new TextField();
+  private TextField ir = new TextField();
+    
+  static JFrame f;
+  static JLabel l;
+  static JLabel btnClear;
+  static JLabel btnCalculate;
   
   @Override // Override the start method in the Application class
   public void start(Stage primaryStage) {
 
-    // set title for the stage
-    primaryStage.setTitle("MeyerGardner Future Value App");
-    primaryStage.show();
-
     /*
     * In the start() method, add a new GridPane object and set its alignment to Pos.CENTER, set its padding to 11.5, 12.5, 13.5, and 14.5. Next, set the panes Hgap to 5.5 and its Vgap to 5.5
     */
+    // Create a pane and set its properties
     GridPane grid = new GridPane();
     grid.setAlignment(Pos.CENTER);
     grid.setHgap(5.5);
     grid.setVgap(5.5);
     grid.setPadding(new Insets(11.5, 12.5, 13.5, 14.5));
 
-    Scene scene = new Scene(grid, 700, 300);
-    primaryStage.setScene(scene);
+    // Place nodes in the pane
+    pane.add(new Label("Monthly Payment"), 0, 0);
+    pane.add(mp, 1, 0);
+    pane.add(new Label("Interest Rate"), 0, 1);
+    pane.add(ir, 1, 1);
+
+    l = new JLabel("Years");
+    pane.add(new Label("Years"), 0,2);
+
+    Button btAdd = new Button("Calculate");
+    pane.add(btAdd, 3, 3);
+    Button btAddn = new Button("Clear");
+    pane.add(btAddn, 0, 3);
+
+    VBox layout = new VBox();
+   TextArea jfxarea = new TextArea();
+   jfxarea.setPrefColumnCount(10);
+    jfxarea.setPrefHeight(75);
+    jfxarea.setPrefWidth(150);
+    
 
     /* 
     * Add the controls to the GridPane. For the lblInterestRateFormat label, set the text fill to red and HPos to the right.
@@ -99,7 +116,10 @@ public class MeyerGardenerFutureValueApp extends Application {
     * one ComboBox of type Integer
     */
     //combobox items
-    ObservableList<String> list = FXCollections.observableArrayList("1","2","3","4");
+    ComboBox comboBox = new ComboBox();
+    comboBox.getItems().add("15");
+    comboBox.getItems().add("20");
+    comboBox.getItems().add("30");
 
     //combobox staffs
     var yearCombo = new ComboBox();
@@ -109,6 +129,12 @@ public class MeyerGardenerFutureValueApp extends Application {
     // create two buttons
     private Button btnClear = new Button("Clear");
     private Button btnCalculate = new Button("Calculate");
+    
+    //Stage and Scene set up
+    Scene scene = new Scene(grid, 700, 300);
+    primaryStage.setTitle("MeyerGardner Future Value App"); // set title for the stage
+    primaryStage.setScene(scene); // Place the scene in the stage
+    primaryStage.show(); // Display the stage
   }
   
   // Main method only needed for IDE with limited JavaFX support. Not needed for running from command line.
