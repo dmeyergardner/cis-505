@@ -4,12 +4,22 @@
     Modified by R. Krasso 2021
     Additional modifications by D. Meyer-Gardner 2023
  */
-//package com.mycompany.futurevalueapp;
+package FutureValueApp;
 
+import javafx.application.Application;
+import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class MeyerGardnerFutureValueApp extends Application {
@@ -33,8 +43,6 @@ public class MeyerGardnerFutureValueApp extends Application {
          * Create private variables for two TextField’s, one TextArea, five Labels, one ComboBox of type Integer, and two Button’s.
          */
         // create two textfield
-        
-/*
         private TextField txtMonthlyPayment = new TextField();
         private TextField txtInterestRate = new TextField();
 
@@ -54,22 +62,15 @@ public class MeyerGardnerFutureValueApp extends Application {
         // create two buttons
         private Button btnClear = new Button("Clear");
         private Button btnCalculate = new Button("Calculate");
-
         
-        
-        
-        /* 
-        * Add the controls to the GridPane. For the lblInterestRateFormat label, set the text fill to red and HPos to the right.
-        
+        //Add the controls to the GridPane. For the lblInterestRateFormat label, set the text fill to red and HPos to the right.
         pane.add(lblMonthlyPayment);
         pane.add(txtMonthlyPayment);
         lblInterestRateFormat.setTextFill (Color.RED); //Set the font color of the interest rate instructions to red
         pane.add(lblInterestRateFormat, 1, 2); //Add the label to the grid pane
         GridPane.setHalignment(lblInterestRateFormat, HPos.RIGHT); //Postition the label to the right of the pane
 
-        /*
-            Add the clear and calculate buttons to an HBox with a spacing of 10 and a padding of 15, 0, 15, and 30.
-         
+        //Add the clear and calculate buttons to an HBox with a spacing of 10 and a padding of 15, 0, 15, and 30.
         HBox actionBtnContainer = new HBox(); //Create new Hbox container
         actionBtnContainer.setPadding (new Insets(15, 0, 15, 30)); //set container padding
         actionBtnContainer.setSpacing (10); //set container spacing
@@ -79,10 +80,8 @@ public class MeyerGardnerFutureValueApp extends Application {
         actionBtnContainer.getChildren ()
 
         .add(btnCalculate); //add btnCalculate to container
-        pane.add (actionBtnContainer, 
-        1, 4); //add the container to the grid panel
+        pane.add (actionBtnContainer, 1, 4); //add the container to the grid panel
         
-        */
         
         //Stage and Scene set up
         Scene scene = new Scene(pane, 700, 300);
@@ -94,8 +93,8 @@ public class MeyerGardnerFutureValueApp extends Application {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+        public static void main(String args) {
         launch(args);
     }  
-}
+    }
 }
