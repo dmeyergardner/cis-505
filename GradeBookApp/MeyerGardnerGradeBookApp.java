@@ -5,7 +5,11 @@
     Modified by Noah Pilkington
     Additional modifications by D. Meyer-Gardner 2023
 
-    Provide users with a grade book form. Include the following fields: first name, last name, course, and grade (use A-F). For the grade field use a ComboBox with prefilled values.
+Capstone Project Requirements
+Name the project folder GradeBookApp.
+Name the program file YourLastNameGradeBookApp.java.
+Use GitHub to store the project.
+Provide users with a grade book form. Include the following fields: first name, last name, course, and grade (use A-F). For the grade field use a ComboBox with prefilled values.
 Use labels to identify the forms fields.
 Provide users with a button to clear the grade book form.
 Provide users with a button to view saved grade entries.
