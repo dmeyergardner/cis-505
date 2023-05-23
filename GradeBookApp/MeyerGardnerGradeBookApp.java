@@ -18,6 +18,13 @@ On form submission, write the entered values to a csv file named grades.csv. The
 When a user selects the “view grades’ button, display the contents of the grades.csv file.
 Use a Java class to hold the values from the gradebook form (firstName, lastName, course, and grade). Name the class Student and include private variables for the fields with two constructors: a default constructor and a parameterized constructor with the class’s properties. Add getter/setter methods for the class properties and Override the toString() method.
 Use the Student classes toString() method to output the object to the results section of the GUI you create.
+
+Build the Capstone Project’s user interface using JavaFX.
+Note: You are only building the User Interface portion of the project. During Sprint 2 (module 11) you will be adding event handling.
+
+add the appropriate event handlers to make the application fully functional.
+
+
 */
 package GradeBookApp;
 
