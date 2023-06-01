@@ -20,67 +20,71 @@ package GradeBookApp;
 
 import java.util.*;
 
-public class Grade {
-    private static int score;
-    private static String letterGrade;
+public class Student // keeps track of student data
+{
+    private String firstName;
+    private String lastName;
+    private int pid;
+    private int grade;
+    //private  int score;
 //----------------------------------------------------------------------------------------------------
-    //Getters
-    public static int getScore() //Numerical e.g 99
+    // Getters
+    public String getFirstName()
     {
-        return score;
+        return firstName;
     }
-    public static String getLetterGrade()
+    public String getLastName()
     {
-        return letterGrade;
+        return lastName;
     }
-//----------------------------------------------------------------------------------------------------
-    // Setters
-    public void setScore(int score)
+    public int getPid()
     {
-        this.score= score;
+        return pid;
     }
-    public static String setLetterGrade(int score)
+    public int getGrade()
     {
-        // sets letterGrade variable to correct string letter, depending on score value.
-        if (score >= 90)
-        {
-            return "A";
-        } else if (score >= 85) {
-            return "A-";
-        } else if (score >= 80) {
-            return "B+";
-        } else if (score >= 75) {
-            return "B";
-        } else if (score >= 70) {
-            return "B-";
-        } else if (score >= 65) {
-            return "C+";
-        } else if (score >= 60) {
-            return "C";
-        } else if (score >= 55) {
-            return "C-";
-        } else if (score >= 50) {
-            return "D";
-        } else {
-            return "F";
-        }
+        return grade;
     }
 
+    //----------------------------------------------------------------------------------------------------
+    //setters
+    public void setFirstName(String firstName)
+    {
+        this.firstName = firstName;
+    }
+    public void setLastName(String lastName)
+    {
+        this.lastName = lastName;
+    }
+    public void setPid(int pid)
+    {
+        this.pid = pid;
+    }
+    public void setGrade(int grade)
+    {
+        this.grade = grade;
+    }
 
+//----------------------------------------------------------------------------------------------------
+    // CUSTOM CONSTRUCTOR
+
+    Student(String firstName, String lastName, int pid, int grade)
+    {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.pid = pid;
+        this.grade =grade;
+        //this.score = score;
+    }
 //----------------------------------------------------------------------------------------------------
     // Default constructor
 
-    Grade()
+    Student()
     {
-        this.score = 0;
-        this.letterGrade = "";
-    }
-    // Custom constructor
-    Grade(int score, String letterGrade)
-    {
-        this.score = score;
-        this.letterGrade = letterGrade;
+        this.firstName = "";
+        this.lastName = "";
+        this.pid = 0;
+        this.grade = 0;
     }
 //----------------------------------------------------------------------------------------------------
-
-}// end of classespackage.Grade class
+} //end of student class
