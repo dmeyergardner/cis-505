@@ -31,8 +31,6 @@ Capstone Project Requirements
 	Build the Capstone Project’s user interface using JavaFX.
 
 	add the appropriate event handlers to make the application fully functional.
-
-
 */
 
 package application;
@@ -44,8 +42,7 @@ public class Student // keeps track of student data
     private String course;
     private String grade;
 
-//----------------------------------------------------------------------------------------------------
-    // Getters
+/* ----- GETTER METHODS ----- */
     public String getFirstName()
     {
         return this.firstName;
@@ -62,9 +59,7 @@ public class Student // keeps track of student data
     {
         return this.grade;
     }
-
-    //----------------------------------------------------------------------------------------------------
-    //setters
+/* ----- SETTER METHODS ----- */
     public void setFirstName(String fn)
     {
         this.firstName = fn;
@@ -81,10 +76,8 @@ public class Student // keeps track of student data
     {
         this.grade = g;
     }
-
-//----------------------------------------------------------------------------------------------------
-    // CUSTOM CONSTRUCTOR
-
+	
+/* ----- CUSTOM CONSTRUCTOR ----- */
     Student(String fn, String ln, String c, String g)
     {
         this.firstName = fn;
@@ -93,9 +86,7 @@ public class Student // keeps track of student data
         this.grade =g;
         //this.score = score;
     }
-//----------------------------------------------------------------------------------------------------
-    // Default constructor
-
+/* ----- DEFAULT CONSTRUCTOR ----- */
     Student()
     {
         this.firstName = "";
@@ -103,12 +94,9 @@ public class Student // keeps track of student data
         this.course = "";
         this.grade = "";
     }
-//----------------------------------------------------------------------------------------------------
-    // override toString method
-
-   	@Override
+/* ----- OVERRIDE TOSTRING METHOD ON COMPILE ----- */
+   @Override
 	public String toString() {
-	//	return "Student: " + firstName + " " + lastName + "\nCourse: " + course + "\nGrade: " + grade + "\n";\
    		return("Student: " + this.getFirstName() + " " + this.getLastName() + "\nCourse: " + this.getCourse() + "\nGrade: " + this.getGrade() + "\n");
 	}
 } //end of student class
