@@ -29,10 +29,8 @@ Capstone Project Requirements
 	Use the Student classes toString() method to output the object to the results section of the GUI you create.
 
 	Build the Capstone Project’s user interface using JavaFX.
-	Note: You are only building the User Interface portion of the project.
-	During Sprint 2 (module 11) you will be adding event handling.
-
-	add the appropriate event handlers to make the application fully functional.
+	
+	add the appropriate event and error handlers to make the application fully functional.
 
 
 */
@@ -47,7 +45,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
 import java.util.ArrayList;
-
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -65,21 +62,20 @@ import javafx.stage.Stage;
 
 public class MeyerGardnerGradeBookApp extends Application {
 
-	// labels for all fields
-	private Label lblFirstName = new Label("Student's First Name:");
-	private Label lblLastName = new Label("Student's Last Name:");
-	private Label lblCourse = new Label("Student's Course:");
-	private Label lblGrade = new Label("Student's Grade:");
-
-	// text fields for student first and last name, student course
-	private final TextField txtFirstName = new TextField();
-	private final TextField txtLastName = new TextField();
-	private final TextField txtCourseName = new TextField();
-
-	// combobox (drop-down) items of type string
-	private String[] gradesCbo = {"A", "B", "C", "D", "F"};
-    private ComboBox<String> cboGrade = new ComboBox<>();
-	// create buttons
+/* ----- FIRST NAME ----- */
+	private Label lblFirstName = new Label("Student's First Name:"); // label
+	private final TextField txtFirstName = new TextField(); // text field
+/* ----- LAST NAME ----- */
+	private Label lblLastName = new Label("Student's Last Name:"); // label
+	private final TextField txtLastName = new TextField(); // text field
+/* ----- COURSE ----- */
+	private Label lblCourse = new Label("Student's Course:"); // label
+	private final TextField txtCourseName = new TextField(); // text field
+/* ----- GRADE ----- */
+	private Label lblGrade = new Label("Student's Grade:"); // label
+	private String[] gradesCbo = {"A", "B", "C", "D", "F"}; // combobox (drop-down) items of type string
+    	private ComboBox<String> cboGrade = new ComboBox<>(); // storing new combobox (drop-down) items of type string
+/* ----- BUTTONS ----- */	
 	private Button btnClear = new Button("Clear");
 	private Button btnSave = new Button("Save");
 	private Button btnView = new Button("View");
@@ -87,73 +83,73 @@ public class MeyerGardnerGradeBookApp extends Application {
 	// output area
 	private TextArea txt = new TextArea();
 
-
 	// Extend the JavaFX Application object and setup the @Override start method with a single argument for the Stage object
 	@Override
 	public void start(Stage primaryStage) {
 
-		// Create a pane and set its properties
+/* ----- SET UP A GUI FX PANE AND PROPERTIES ----- */
 		GridPane pane = new GridPane();
 		pane.setAlignment(Pos.CENTER);
 		pane.setPadding(new Insets(11.5, 12.5, 13.5, 14.5));
 		pane.setHgap(5.5);
 		pane.setVgap(5.5);
-        //combobox
-		this.cboGrade.getItems().addAll(gradesCbo);
-
-		// add button action event handlers
-		// Clear button action
+        	
+/* ----- EVENT HANDLERS ----- */
+		this.cboGrade.getItems().addAll(gradesCbo); // grab this combobox entry
+		
+		students.remove(0); //removes header row from arraylist
+			for (Student s:students) {
+				// **** REPLACE WITH ACTUAL OUTPUT ****
+				//placeholder to validate reading of file
+				//System.out.println(s.toString());
+				// **** REPLACE WITH ACTUAL OUTPUT ****
+				
+				//text Box output for pane
+				txt.appendText(s.toString());
+				txt.appendText("\n");
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+	
+/* ----- BUTTONS HANDLERS ----- */
+	// Clear button action
 		btnClear.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override public void handle(ActionEvent e) {
 		    	clearFormFields();
 		    }
 		});
-		// Save Button
+	// Save Button
 		btnSave.setOnAction(new EventHandler<ActionEvent>() {
 			@Override public void handle(ActionEvent e) {
-				try{
+				try {
 					writeCSV(new Student(txtFirstName.getText(),txtLastName.getText(),txtCourseName.getText(),cboGrade.getValue()));
 				} catch(Exception ex) {
 					ex.printStackTrace();
 				}
 			}
 		});
-		// View Button
+	// View Button
 		btnView.setOnAction(new EventHandler<ActionEvent>() {
 			@Override public void handle(ActionEvent e) {
+				
 				// do a view action here
 				ArrayList<Student> students = new ArrayList<>();
-
 				try {
 					students = readCSV();
-
-			        // create a VBox to put output in
-			        students.remove(0); //removes header row from arraylist
-					for (Student s:students) {
-						// **** REPLACE WITH ACTUAL OUTPUT ****
-						//placeholder to validate reading of file
-						//System.out.println(s.toString());
-						// **** REPLACE WITH ACTUAL OUTPUT ****
-
-						//text Box output for pane
-						txt.appendText(s.toString());
-						txt.appendText("\n");
-
-					}
-
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+				} catch(Exception ex) {
+					ex.printStackTrace();
 				}
 			}
 		});
-
-
+					
+/* ----- SET UP A GUI FX HBOX AND PRPERTIES  ----- */
 		//txt.setPrefColumnCount(30);
 		//txt.setPrefHeight(20);
 		txt.setPrefSize(500, 300);
 		txt.setEditable(false);
-		// Add the controls to the GridPane
+					
+	// Add the controls to the GridPane
 		pane.add(lblFirstName, 0, 0);
 		pane.add(txtFirstName, 1, 0);
 		pane.add(lblLastName, 0, 1);
@@ -164,18 +160,18 @@ public class MeyerGardnerGradeBookApp extends Application {
 		pane.add(cboGrade, 1, 4);
 		pane.add(txt, 1, 6);
 
-		// Add action buttons to an HBox
-        HBox actionBtnContainer = new HBox(10);
-        actionBtnContainer.setPadding(new Insets(15, 0, 15, 30));
-        actionBtnContainer.getChildren().add(btnSave);
-        actionBtnContainer.getChildren().add(btnClear);
-        actionBtnContainer.getChildren().add(btnView);
-        pane.add(actionBtnContainer,1,5);
-
+	// Add action buttons to an HBox
+        	HBox actionBtnContainer = new HBox(10);
+        	actionBtnContainer.setPadding(new Insets(15, 0, 15, 30));
+        	actionBtnContainer.getChildren().add(btnSave);
+        	actionBtnContainer.getChildren().add(btnClear);
+        	actionBtnContainer.getChildren().add(btnView);
+        	pane.add(actionBtnContainer,1,5);
+		
+/* ----- SET THE GUI FX SCENE AND SHOW STAGE ----- */
 		try {
-
 			Scene scene = new Scene(pane,700,700);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("Meyer-Gardner Gradebook App");
 			primaryStage.show();
@@ -183,15 +179,14 @@ public class MeyerGardnerGradeBookApp extends Application {
 			e.printStackTrace();
 		}
 	}
-
+	// CLEAR All fields
 	private void clearFormFields() {
 		txtFirstName.setText("");
 		txtLastName.setText("");
 		txtCourseName.setText("");
-        //lblGrade.setText("Grades as of " + getCurrentDate());
-        cboGrade.setValue("");
-        txt.clear();
-    }
+        	cboGrade.setValue("");
+        	txt.clear();
+    	}
 
 	public static void main(String[] args) {
 		launch(args);
@@ -202,16 +197,17 @@ public class MeyerGardnerGradeBookApp extends Application {
          clearFormFields();
      }
 */
-
+	
+/* ----- CSV READ AND WRITE ----- */
+	
+	// Begin writeCSV
 	public static void writeCSV(Student s) throws java.io.IOException {
 		/* if file is new with no records, add header row,
 		  otherwise just append student info in new line
 
 		  input: Student
 		  output: write to file grades.csv
-
 		  */
-
 		Writer writer = null;
 		try {
 			File file = new File("grades.csv");
@@ -225,28 +221,23 @@ public class MeyerGardnerGradeBookApp extends Application {
 			writer.write(s.getFirstName() + "," + s.getLastName() + "," + s.getCourse() + "," + s.getGrade());
 			writer.write(System.getProperty("line.separator"));
 			writer.close();
-		}
-
-		catch(IOException ex){
+		} catch(IOException ex){
 			ex.printStackTrace();
 		}
-
-		} // end writeCSV
-
+	} // end writeCSV
+	
+	// Begin readCSV
 	public ArrayList<Student> readCSV() throws java.io.IOException {
 		ArrayList<Student> students = new ArrayList<>();
 		try (BufferedReader br = new BufferedReader(new FileReader("grades.csv"))) {
 			String line = new String();
 			while ((line = br.readLine())!= null) {
-			String[] s = line.split(","); //splits each line by comma into a String array of each part
-			students.add(new Student(s[0],s[1],s[2],s[3]));
+				String[] s = line.split(","); //splits each line by comma into a String array of each part
+				students.add(new Student(s[0],s[1],s[2],s[3]));
 			}
-
-		}catch(IOException ex) {
+		} catch(IOException ex) {
 			ex.printStackTrace();
 		}
-
 		return students;
 	} //end readCSV
-
 }
