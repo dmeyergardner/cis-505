@@ -94,6 +94,7 @@ public class Student // keeps track of student data
         this.course = "";
         this.grade = "";
     }
+    
 /* ----- OVERRIDE TOSTRING METHOD ON COMPILE ----- */
    @Override
 	public String toString() {
