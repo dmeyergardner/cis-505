@@ -96,21 +96,6 @@ public class MeyerGardnerGradeBookApp extends Application {
         	
 /* ----- EVENT HANDLERS ----- */
 		this.cboGrade.getItems().addAll(gradesCbo); // grab this combobox entry
-		
-		students.remove(0); //removes header row from arraylist
-			for (Student s:students) {
-				// **** REPLACE WITH ACTUAL OUTPUT ****
-				//placeholder to validate reading of file
-				//System.out.println(s.toString());
-				// **** REPLACE WITH ACTUAL OUTPUT ****
-				
-				//text Box output for pane
-				txt.appendText(s.toString());
-				txt.appendText("\n");
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
 	
 /* ----- BUTTONS HANDLERS ----- */
 	// Clear button action
@@ -137,11 +122,27 @@ public class MeyerGardnerGradeBookApp extends Application {
 				ArrayList<Student> students = new ArrayList<>();
 				try {
 					students = readCSV();
-				} catch(Exception ex) {
+					students.remove(0); //removes header row from arraylist
+					for (Student s:students) {
+						// **** REPLACE WITH ACTUAL OUTPUT ****
+						//placeholder to validate reading of file
+						//System.out.println(s.toString());
+						// **** REPLACE WITH ACTUAL OUTPUT **** 
+						
+						//text Box output for pane
+						txt.appendText(s.toString());
+						txt.appendText("\n");
+					} 
+				} catch (IOException e1) {
+				// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} 
+				/*} catch(Exception ex) {
 					ex.printStackTrace();
-				}
+				} */
 			}
-		});
+
+	});
 					
 /* ----- SET UP A GUI FX HBOX AND PRPERTIES  ----- */
 		//txt.setPrefColumnCount(30);
